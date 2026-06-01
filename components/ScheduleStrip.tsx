@@ -1,12 +1,13 @@
+import React from 'react'
 import Link from 'next/link'
 import { Clock, ArrowRight } from 'lucide-react'
 import { scheduleToday } from '@/data'
 
-const labelStyles: Record<string, { bg: string; text: string }> = {
-  NOW:     { bg: 'var(--color-gold-muted)',   text: 'var(--color-ivory)' },
-  NEXT:    { bg: 'rgba(216,198,165,0.2)',      text: 'var(--color-gold-champagne)' },
-  LATER:   { bg: 'rgba(216,198,165,0.12)',     text: 'var(--color-gold-champagne)' },
-  TONIGHT: { bg: 'rgba(216,198,165,0.08)',     text: 'var(--color-gold-champagne)' },
+const labelStyles: Record<string, React.CSSProperties> = {
+  NOW:     { background: 'var(--color-gold-muted)',   color: 'var(--color-ivory)' },
+  NEXT:    { background: 'rgba(216,198,165,0.2)',      color: 'var(--color-gold-champagne)' },
+  LATER:   { background: 'rgba(216,198,165,0.12)',     color: 'var(--color-gold-champagne)' },
+  TONIGHT: { background: 'rgba(216,198,165,0.08)',     color: 'var(--color-gold-champagne)' },
 }
 
 export default function ScheduleStrip() {
