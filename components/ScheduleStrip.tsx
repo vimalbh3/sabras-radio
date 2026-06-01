@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Clock, ArrowRight } from 'lucide-react'
-import { scheduleToday } from '@/data'
+import { getScheduleToday } from '@/data'
 
 const labelStyles: Record<string, React.CSSProperties> = {
   NOW:     { background: 'var(--color-gold-muted)',   color: 'var(--color-ivory)' },
@@ -11,6 +11,7 @@ const labelStyles: Record<string, React.CSSProperties> = {
 }
 
 export default function ScheduleStrip() {
+  const scheduleToday = getScheduleToday()
   return (
     <section style={{ background: 'var(--color-navy)' }}>
       <div className="max-w-screen-xl mx-auto px-4 md:px-8 py-12 md:py-16">

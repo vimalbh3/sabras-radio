@@ -73,69 +73,89 @@ export const presenters = [
   },
 ]
 
-export const scheduleToday = [
-  { label: 'NOW',     show: 'Morning Glory',    presenter: 'Raj Sharma',   time: '06:00 – 10:00' },
-  { label: 'NEXT',    show: 'Desi Vibes',       presenter: 'Priya Patel',  time: '10:00 – 13:00' },
-  { label: 'LATER',   show: 'Afternoon Drive',  presenter: 'Amir Hussain', time: '13:00 – 16:00' },
-  { label: 'TONIGHT', show: 'The Drive Home',   presenter: 'Sonia Mehta',  time: '16:00 – 19:00' },
+// ── Real Sabras Radio schedule ─────────────────────────────────────────────
+
+const WEEKDAY_SLOTS = [
+  { time: '00:00', show: 'Sabras Mix',         presenter: 'Non-Stop Hits' },
+  { time: '06:00', show: 'Religious Programme', presenter: '' },
+  { time: '07:00', show: 'Breakfast Show',      presenter: 'Sam' },
+  { time: '10:00', show: 'Mid-morning Show',    presenter: 'Amber' },
+  { time: '13:00', show: 'Talks & Talkies',     presenter: 'Nihaal' },
+  { time: '15:00', show: 'Long Drive',          presenter: 'Kash Kumar' },
+  { time: '19:00', show: 'Sabras Mix',          presenter: '1hr Non-Stop Hits' },
+  { time: '20:00', show: 'Gujarati Show',       presenter: 'Mahesh Nathwani' },
+  { time: '21:00', show: 'Punjabi Show',        presenter: 'Rajpal' },
+  { time: '22:00', show: 'Evening with Rumi',   presenter: 'Rumi' },
 ]
 
 export const fullSchedule = [
-  { day: 'Monday', slots: [
-    { time: '06:00', show: 'Morning Glory', presenter: 'Raj Sharma' },
-    { time: '10:00', show: 'Desi Vibes', presenter: 'Priya Patel' },
-    { time: '13:00', show: 'Afternoon Drive', presenter: 'Amir Hussain' },
-    { time: '16:00', show: 'The Drive Home', presenter: 'Sonia Mehta' },
-    { time: '19:00', show: 'The Chart Show', presenter: 'Dev Singh' },
-    { time: '22:00', show: 'Late Night Lounge', presenter: 'Auto DJ' },
-  ]},
-  { day: 'Tuesday', slots: [
-    { time: '06:00', show: 'Morning Glory', presenter: 'Raj Sharma' },
-    { time: '10:00', show: 'Desi Vibes', presenter: 'Priya Patel' },
-    { time: '13:00', show: 'Afternoon Drive', presenter: 'Amir Hussain' },
-    { time: '16:00', show: 'The Drive Home', presenter: 'Sonia Mehta' },
-    { time: '19:00', show: 'Bolly Beats', presenter: 'Dev Singh' },
-    { time: '22:00', show: 'Late Night Lounge', presenter: 'Auto DJ' },
-  ]},
-  { day: 'Wednesday', slots: [
-    { time: '06:00', show: 'Morning Glory', presenter: 'Raj Sharma' },
-    { time: '10:00', show: 'Desi Vibes', presenter: 'Priya Patel' },
-    { time: '13:00', show: 'Afternoon Drive', presenter: 'Amir Hussain' },
-    { time: '16:00', show: 'The Drive Home', presenter: 'Sonia Mehta' },
-    { time: '19:00', show: 'The Chart Show', presenter: 'Dev Singh' },
-    { time: '22:00', show: 'Late Night Lounge', presenter: 'Auto DJ' },
-  ]},
-  { day: 'Thursday', slots: [
-    { time: '06:00', show: 'Morning Glory', presenter: 'Raj Sharma' },
-    { time: '10:00', show: 'Desi Vibes', presenter: 'Priya Patel' },
-    { time: '13:00', show: 'Afternoon Drive', presenter: 'Amir Hussain' },
-    { time: '16:00', show: 'The Drive Home', presenter: 'Sonia Mehta' },
-    { time: '19:00', show: 'Bolly Beats', presenter: 'Dev Singh' },
-    { time: '22:00', show: 'Late Night Lounge', presenter: 'Auto DJ' },
-  ]},
-  { day: 'Friday', slots: [
-    { time: '06:00', show: 'Morning Glory', presenter: 'Raj Sharma' },
-    { time: '10:00', show: 'Desi Vibes', presenter: 'Priya Patel' },
-    { time: '13:00', show: 'Afternoon Drive', presenter: 'Amir Hussain' },
-    { time: '16:00', show: 'The Drive Home', presenter: 'Sonia Mehta' },
-    { time: '19:00', show: 'Weekend Warm-Up', presenter: 'Dev Singh' },
-    { time: '22:00', show: 'Late Night Mix', presenter: 'Auto DJ' },
-  ]},
-  { day: 'Saturday', slots: [
-    { time: '08:00', show: 'Weekend Breakfast', presenter: 'Anita Chopra' },
-    { time: '12:00', show: 'Saturday Sessions', presenter: 'Dev Singh' },
-    { time: '16:00', show: 'The Request Show', presenter: 'Priya Patel' },
-    { time: '20:00', show: 'Saturday Night Special', presenter: 'Amir Hussain' },
-    { time: '23:00', show: 'Late Night Lounge', presenter: 'Auto DJ' },
+  { day: 'Monday',    slots: WEEKDAY_SLOTS },
+  { day: 'Tuesday',   slots: WEEKDAY_SLOTS },
+  { day: 'Wednesday', slots: WEEKDAY_SLOTS },
+  { day: 'Thursday',  slots: WEEKDAY_SLOTS },
+  { day: 'Friday',    slots: WEEKDAY_SLOTS },
+  { day: 'Saturday',  slots: [
+    { time: '00:00', show: 'Sabras Mix',          presenter: 'Non-Stop Hits' },
+    { time: '06:00', show: 'Religious Programme',  presenter: '' },
+    { time: '07:00', show: 'Saturday Breakfast',   presenter: 'Zahara' },
+    { time: '09:00', show: 'Mic & Masala',         presenter: 'Missy B' },
+    { time: '12:00', show: 'Punjabi Show',         presenter: 'Jagdeep Rainu' },
+    { time: '14:00', show: 'Gujarati Show',        presenter: 'Shobha Joshi' },
+    { time: '16:00', show: 'Chart Show',           presenter: 'Sam' },
+    { time: '19:00', show: 'Desi Mashup',          presenter: 'Akshay' },
+    { time: '22:00', show: 'Ghazal-e-Bahar',       presenter: 'Sahil' },
   ]},
   { day: 'Sunday', slots: [
-    { time: '08:00', show: 'Weekend Breakfast', presenter: 'Anita Chopra' },
-    { time: '12:00', show: 'Sunday Best', presenter: 'Raj Sharma' },
-    { time: '16:00', show: 'Filmi Sunday', presenter: 'Sonia Mehta' },
-    { time: '19:00', show: 'Chill Sunday', presenter: 'Dev Singh' },
-    { time: '22:00', show: 'Late Night Lounge', presenter: 'Auto DJ' },
+    { time: '00:00', show: 'Sabras Mix',           presenter: 'Non-Stop Hits' },
+    { time: '09:00', show: 'Sunday Request',       presenter: 'Vishal Jogiya' },
+    { time: '12:00', show: 'Punjabi Show',         presenter: 'Jagdeep Rainu' },
+    { time: '14:00', show: 'Gujarati Show',        presenter: 'Shobha Joshi' },
+    { time: '16:00', show: 'Filmi Kalakar',        presenter: 'Alia' },
+    { time: '18:00', show: 'Sunday Mirchi',        presenter: 'Dhruv Pandya' },
+    { time: '19:00', show: 'Bollywood Gold',       presenter: 'Rajpal' },
+    { time: '22:00', show: 'Ghazal-e-Bahar',       presenter: 'Sahil' },
   ]},
 ]
+
+// ── Dynamic schedule strip (used by ScheduleStrip component) ───────────────
+// Returns the 4 slots around the current UK time: now, next, later, tonight.
+
+function toMins(hhmm: string): number {
+  const [h, m] = hhmm.split(':').map(Number)
+  return h * 60 + (m ?? 0)
+}
+
+export function getScheduleToday() {
+  const now   = new Date()
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    weekday: 'long',
+    hour:    '2-digit',
+    minute:  '2-digit',
+    hour12:  false,
+  }).formatToParts(now)
+
+  const day     = parts.find(p => p.type === 'weekday')?.value ?? 'Monday'
+  const hour    = parts.find(p => p.type === 'hour')?.value    ?? '00'
+  const minute  = parts.find(p => p.type === 'minute')?.value  ?? '00'
+  const nowMins = toMins(`${hour}:${minute}`)
+
+  const slots = fullSchedule.find(d => d.day === day)?.slots ?? WEEKDAY_SLOTS
+
+  // Find the last slot whose start ≤ now
+  let idx = 0
+  for (let i = 0; i < slots.length; i++) {
+    if (toMins(slots[i].time) <= nowMins) idx = i
+  }
+
+  const labels = ['NOW', 'NEXT', 'LATER', 'TONIGHT'] as const
+  return slots.slice(idx, idx + 4).map((slot, i) => ({
+    label:     labels[i] ?? 'LATER',
+    show:      slot.show,
+    presenter: slot.presenter,
+    time:      slot.time,
+  }))
+}
 
 export const newsArticles = {
   bollywood: [
