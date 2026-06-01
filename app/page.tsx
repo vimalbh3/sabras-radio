@@ -11,6 +11,8 @@ export default function HomePage() {
     <>
       <HeroSection />
 
+      <PromoBlocks />
+
       {/* Hero leaderboard ad */}
       <div className="max-w-screen-xl mx-auto px-4 md:px-8 py-6">
         <AdSlot size="leaderboard" label="Advertisement · Sponsored" />
@@ -25,8 +27,6 @@ export default function HomePage() {
       <div className="gold-divider" />
 
       <NewsHub />
-
-      <PromoBlocks />
 
       {/* Promotional banner ad */}
       <div
