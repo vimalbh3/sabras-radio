@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Play, ArrowRight } from 'lucide-react'
 
 export default function HeroSection() {
-  const { openListenLive } = useApp()
+  const { openListenLive, nowPlaying } = useApp()
 
   return (
     <section
@@ -34,7 +34,7 @@ export default function HeroSection() {
                 style={{ background: 'rgba(184,149,95,0.12)', border: '1px solid rgba(184,149,95,0.3)', color: 'var(--color-gold-muted)' }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-muted animate-pulse" />
-                Live Now · Morning Glory
+                Live Now · {nowPlaying.show}
               </span>
             </div>
 
@@ -193,13 +193,17 @@ export default function HeroSection() {
                 </div>
                 <div>
                   <p className="font-sans text-[0.6rem] tracking-widest uppercase" style={{ color: 'var(--color-gold-muted)' }}>
-                    Now Playing
+                    {nowPlaying.track ? 'Now Playing' : 'On Air'}
                   </p>
-                  <p className="font-serif text-sm font-medium" style={{ color: 'var(--color-navy)' }}>
-                    Kesariya
+                  <p className="font-serif text-sm font-medium truncate max-w-[140px]" style={{ color: 'var(--color-navy)' }}>
+                    {nowPlaying.track
+                      ? nowPlaying.track.split(' - ')[0] ?? nowPlaying.track
+                      : nowPlaying.show}
                   </p>
                   <p className="font-sans text-[0.6rem]" style={{ color: 'var(--color-espresso-light)', opacity: 0.6 }}>
-                    Arijit Singh
+                    {nowPlaying.track
+                      ? nowPlaying.track.split(' - ')[1] ?? ''
+                      : nowPlaying.presenter}
                   </p>
                 </div>
                 <div className="flex items-end gap-[2px] h-5 ml-2 flex-shrink-0">
@@ -225,14 +229,16 @@ export default function HeroSection() {
                   className="w-8 h-8 rounded-full flex items-center justify-center font-serif text-xs font-semibold flex-shrink-0"
                   style={{ background: 'var(--color-gold-muted)', color: 'var(--color-ivory)' }}
                 >
-                  RS
+                  {nowPlaying.presenter
+                    ? nowPlaying.presenter.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+                    : 'SR'}
                 </div>
                 <div>
                   <p className="font-sans text-[0.55rem] tracking-widest uppercase" style={{ color: 'var(--color-gold-muted)' }}>
                     On Air
                   </p>
-                  <p className="font-sans text-[0.7rem] font-medium" style={{ color: 'var(--color-ivory)' }}>
-                    Raj Sharma
+                  <p className="font-sans text-[0.7rem] font-medium truncate max-w-[100px]" style={{ color: 'var(--color-ivory)' }}>
+                    {nowPlaying.presenter || nowPlaying.show}
                   </p>
                 </div>
               </div>

@@ -32,7 +32,7 @@ const socials = [
 ]
 
 export default function Header() {
-  const { openListenLive } = useApp()
+  const { openListenLive, nowPlaying } = useApp()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -68,13 +68,17 @@ export default function Header() {
               </span>
               <div className="overflow-hidden flex-1">
                 <div className="marquee-track">
-                  {[1, 2].map((_, j) => (
+                  {[0, 1].map((j) => (
                     <span
                       key={j}
                       className="font-sans text-[0.65rem] pr-16 whitespace-nowrap"
                       style={{ color: 'var(--color-gold-champagne)', opacity: 0.8 }}
                     >
-                      Morning Glory with Raj Sharma &nbsp;·&nbsp; Now Playing: Kesariya — Arijit Singh &nbsp;·&nbsp; Up Next: Desi Vibes with Priya Patel at 10am &nbsp;·&nbsp; Call us: 0116 261 0666
+                      {nowPlaying.show}{nowPlaying.presenter ? ` with ${nowPlaying.presenter}` : ''}
+                      {nowPlaying.track && <>&nbsp;·&nbsp; Now Playing: {nowPlaying.track}</>}
+                      {nowPlaying.nextShow && <>&nbsp;·&nbsp; Up Next: {nowPlaying.nextShow}{nowPlaying.nextPresenter ? ` with ${nowPlaying.nextPresenter}` : ''}{nowPlaying.nextTime ? ` at ${nowPlaying.nextTime}` : ''}</>}
+                      {nowPlaying.listeners != null && <>&nbsp;·&nbsp; {nowPlaying.listeners.toLocaleString()} listeners</>}
+                      &nbsp;·&nbsp; Call us: 0116 261 0666
                     </span>
                   ))}
                 </div>

@@ -5,7 +5,7 @@ import { Play, Pause, Volume2, VolumeX, Radio, ChevronUp } from 'lucide-react'
 import { useApp } from '@/contexts/AppContext'
 
 export default function AudioPlayer() {
-  const { isPlaying, setIsPlaying, openListenLive, volume, setVolume, audioRef } = useApp()
+  const { isPlaying, setIsPlaying, openListenLive, volume, setVolume, audioRef, nowPlaying } = useApp()
   const [showVolume, setShowVolume] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
 
@@ -68,10 +68,12 @@ export default function AudioPlayer() {
               </span>
             </div>
             <p className="font-serif text-sm font-medium truncate" style={{ color: 'var(--color-ivory)' }}>
-              Morning Glory
+              {nowPlaying.track ?? nowPlaying.show}
             </p>
             <p className="font-sans text-[0.65rem] truncate" style={{ color: 'var(--color-gold-champagne)', opacity: 0.7 }}>
-              with Raj Sharma
+              {nowPlaying.track
+                ? nowPlaying.show + (nowPlaying.presenter ? ` · ${nowPlaying.presenter}` : '')
+                : nowPlaying.presenter ? `with ${nowPlaying.presenter}` : 'Sabras Radio'}
             </p>
           </div>
         </div>
