@@ -3,6 +3,7 @@ export const presenters = [
   {
     slug: 'sam',
     name: 'Sam',
+    photo: '/Sam.jpeg',
     initials: 'SA',
     show: 'Breakfast Show',
     time: '7am – 10am',
@@ -27,6 +28,7 @@ export const presenters = [
   {
     slug: 'nihaal',
     name: 'Nihaal',
+    photo: '/Nihaal.jpg',
     initials: 'NI',
     show: 'Talks & Talkies',
     time: '1pm – 3pm',
@@ -39,6 +41,7 @@ export const presenters = [
   {
     slug: 'kash-kumar',
     name: 'Kash Kumar',
+    photo: '/Kash_Kumar.jpeg',
     initials: 'KK',
     show: 'Long Drive',
     time: '3pm – 7pm',
@@ -51,6 +54,7 @@ export const presenters = [
   {
     slug: 'mahesh-nathwani',
     name: 'Mahesh Nathwani',
+    photo: '/Mahesh_Nathwani.jpg',
     initials: 'MN',
     show: 'Gujarati Show',
     time: '8pm – 9pm',
@@ -136,6 +140,7 @@ export const presenters = [
   {
     slug: 'akshay',
     name: 'Akshay',
+    photo: '/Akshay.jpeg',
     initials: 'AK',
     show: 'Desi Mashup',
     time: '7pm – 10pm',

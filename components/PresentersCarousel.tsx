@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import { presenters } from '@/data'
 
@@ -75,15 +76,24 @@ export default function PresentersCarousel() {
                 className={`${p.swatch} relative`}
                 style={{ aspectRatio: '3 / 4', overflow: 'hidden' }}
               >
-                {/* Initials */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span
-                    className="font-serif text-6xl font-light"
-                    style={{ color: 'rgba(255,255,255,0.6)' }}
-                  >
-                    {p.initials}
-                  </span>
-                </div>
+                {'photo' in p && p.photo ? (
+                  <Image
+                    src={p.photo as string}
+                    alt={p.name}
+                    fill
+                    className="object-cover object-top"
+                    sizes="260px"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span
+                      className="font-serif text-6xl font-light"
+                      style={{ color: 'rgba(255,255,255,0.6)' }}
+                    >
+                      {p.initials}
+                    </span>
+                  </div>
+                )}
                 {/* Hover overlay */}
                 <div
                   className="absolute inset-0 flex items-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
