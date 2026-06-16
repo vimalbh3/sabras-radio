@@ -3,9 +3,34 @@
 import { useApp } from '@/contexts/AppContext'
 import Link from 'next/link'
 import { Play, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
+
+const TEAM_IMAGES = [
+  '/Sabras_Team_1.jpg',
+  '/Sabras_Team_2.jpg',
+  '/Sabras_Team_3.jpg',
+  '/Sabras_Team_4.jpg',
+]
 
 export default function HeroSection() {
   const { openListenLive, nowPlaying } = useApp()
+  const [slide, setSlide] = useState(0)
+  const [prevSlide, setPrevSlide] = useState<number | null>(null)
+  const [fading, setFading] = useState(false)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setPrevSlide(slide)
+      setFading(true)
+      setTimeout(() => {
+        setSlide(s => (s + 1) % TEAM_IMAGES.length)
+        setFading(false)
+        setPrevSlide(null)
+      }, 700)
+    }, 4500)
+    return () => clearInterval(id)
+  }, [slide])
 
   return (
     <section
@@ -111,40 +136,58 @@ export default function HeroSection() {
           {/* Right — hero visual */}
           <div className="lg:col-span-7 xl:col-span-7 relative flex items-center justify-center">
             <div className="relative w-full max-w-2xl mx-auto">
-              {/* Studio webcam */}
+              {/* Team photo slideshow */}
               <div
                 className="relative overflow-hidden"
                 style={{
                   aspectRatio: '4 / 3',
                   borderRadius: '2px',
                   boxShadow: '0 32px 80px rgba(15,28,63,0.16)',
-                  background: 'linear-gradient(145deg, #0F1C3F 0%, #1A2F5F 35%, #B8955F 70%, #D8C6A5 100%)',
+                  background: '#0F1C3F',
                 }}
               >
-                <iframe
-                  src="https://secure43.prositehosting.co.uk/sec/sabrasCam.php"
-                  className="absolute inset-0 w-full h-full"
-                  style={{ border: 'none' }}
-                  title="Sabras Radio Live Studio Cam"
-                  loading="lazy"
+                {/* Previous image (fades out) */}
+                {prevSlide !== null && (
+                  <Image
+                    key={`prev-${prevSlide}`}
+                    src={TEAM_IMAGES[prevSlide]}
+                    alt="Sabras Radio team"
+                    fill
+                    className="object-cover"
+                    style={{ opacity: fading ? 0 : 1, transition: 'opacity 700ms ease-in-out', zIndex: 1 }}
+                    priority
+                  />
+                )}
+                {/* Current image (fades in) */}
+                <Image
+                  key={`curr-${slide}`}
+                  src={TEAM_IMAGES[slide]}
+                  alt="Sabras Radio team"
+                  fill
+                  className="object-cover"
+                  style={{ opacity: fading ? 0 : 1, transition: 'opacity 700ms ease-in-out', zIndex: 2 }}
+                  priority
                 />
-                {/* Live cam label */}
+                {/* Subtle gradient overlay at bottom */}
                 <div
-                  className="absolute bottom-4 left-4 flex items-center gap-2 pointer-events-none z-10"
-                  style={{
-                    background: 'rgba(8,18,36,0.65)',
-                    backdropFilter: 'blur(6px)',
-                    padding: '4px 10px',
-                    borderRadius: '2px',
-                  }}
-                >
-                  <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#ef4444' }} />
-                  <span
-                    className="font-sans text-[0.6rem] tracking-[0.2em] uppercase font-semibold"
-                    style={{ color: 'rgba(247,243,237,0.85)' }}
-                  >
-                    Live Studio Cam
-                  </span>
+                  className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
+                  style={{ height: '40%', background: 'linear-gradient(to top, rgba(8,18,36,0.55) 0%, transparent 100%)' }}
+                />
+                {/* Slide indicators */}
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5 z-20">
+                  {TEAM_IMAGES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setPrevSlide(slide); setFading(true); setTimeout(() => { setSlide(i); setFading(false); setPrevSlide(null) }, 700) }}
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: i === slide ? 20 : 6,
+                        height: 6,
+                        background: i === slide ? 'var(--color-gold-champagne)' : 'rgba(247,243,237,0.4)',
+                      }}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
 
