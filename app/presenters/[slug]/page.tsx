@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Clock, Calendar } from 'lucide-react'
 import { presenters } from '@/data'
 import type { Metadata } from 'next'
@@ -81,15 +82,28 @@ export default async function PresenterProfilePage({ params }: Props) {
             {/* Avatar */}
             <div className="lg:col-span-6 flex justify-center lg:justify-end">
               <div
-                className={`${presenter.swatch} w-64 h-64 md:w-80 md:h-80 flex items-center justify-center`}
-                style={{ borderRadius: '2px' }}
+                className={`${presenter.swatch} relative overflow-hidden w-64 md:w-80`}
+                style={{ aspectRatio: '3 / 4', borderRadius: '2px' }}
               >
-                <span
-                  className="font-serif font-light"
-                  style={{ fontSize: '7rem', color: 'rgba(255,255,255,0.45)' }}
-                >
-                  {presenter.initials}
-                </span>
+                {'photo' in presenter && presenter.photo ? (
+                  <Image
+                    src={presenter.photo as string}
+                    alt={presenter.name}
+                    fill
+                    className="object-cover object-top"
+                    sizes="320px"
+                    priority
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span
+                      className="font-serif font-light"
+                      style={{ fontSize: '7rem', color: 'rgba(255,255,255,0.45)' }}
+                    >
+                      {presenter.initials}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -192,10 +206,22 @@ export default async function PresenterProfilePage({ params }: Props) {
             {others.map((p) => (
               <Link key={p.slug} href={`/presenters/${p.slug}`} className="group block">
                 <div className="card-base overflow-hidden" style={{ background: 'white' }}>
-                  <div className={`${p.swatch} relative flex items-center justify-center`} style={{ aspectRatio: '3/2' }}>
-                    <span className="font-serif text-5xl font-light" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                      {p.initials}
-                    </span>
+                  <div className={`${p.swatch} relative overflow-hidden`} style={{ aspectRatio: '3/2' }}>
+                    {'photo' in p && p.photo ? (
+                      <Image
+                        src={p.photo as string}
+                        alt={p.name}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(min-width: 640px) 33vw, 100vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-serif text-5xl font-light" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                          {p.initials}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <div className="p-5">
                     <p className="font-serif text-lg font-medium group-hover:text-gold-muted transition-colors" style={{ color: 'var(--color-navy)' }}>

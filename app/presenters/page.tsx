@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { presenters } from '@/data'
 
@@ -33,17 +34,27 @@ export default function PresentersPage() {
                 <div className="card-base overflow-hidden" style={{ background: 'white' }}>
                   {/* Avatar */}
                   <div
-                    className={`${p.swatch} relative`}
+                    className={`${p.swatch} relative overflow-hidden`}
                     style={{ aspectRatio: '4 / 3' }}
                   >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span
-                        className="font-serif text-8xl font-light"
-                        style={{ color: 'rgba(255,255,255,0.5)' }}
-                      >
-                        {p.initials}
-                      </span>
-                    </div>
+                    {'photo' in p && p.photo ? (
+                      <Image
+                        src={p.photo as string}
+                        alt={p.name}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span
+                          className="font-serif text-8xl font-light"
+                          style={{ color: 'rgba(255,255,255,0.5)' }}
+                        >
+                          {p.initials}
+                        </span>
+                      </div>
+                    )}
                     <div
                       className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                       style={{ background: 'linear-gradient(to top, rgba(15,28,63,0.8), transparent 60%)' }}
