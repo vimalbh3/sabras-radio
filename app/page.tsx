@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import HeroSection from '@/components/HeroSection'
 import AdSlot from '@/components/AdSlot'
 import PresentersCarousel from '@/components/PresentersCarousel'

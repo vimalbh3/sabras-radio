@@ -111,68 +111,40 @@ export default function HeroSection() {
           {/* Right — hero visual */}
           <div className="lg:col-span-7 xl:col-span-7 relative flex items-center justify-center">
             <div className="relative w-full max-w-2xl mx-auto">
-              {/* Main image frame */}
+              {/* Studio webcam */}
               <div
                 className="relative overflow-hidden"
                 style={{
                   aspectRatio: '4 / 3',
                   borderRadius: '2px',
                   boxShadow: '0 32px 80px rgba(15,28,63,0.16)',
+                  background: 'linear-gradient(145deg, #0F1C3F 0%, #1A2F5F 35%, #B8955F 70%, #D8C6A5 100%)',
                 }}
               >
-                {/* Background visual — abstract premium gradient */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: 'linear-gradient(145deg, #0F1C3F 0%, #1A2F5F 35%, #B8955F 70%, #D8C6A5 100%)',
-                  }}
+                <iframe
+                  src="https://secure43.prositehosting.co.uk/sec/sabrasCam.php"
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 'none' }}
+                  title="Sabras Radio Live Studio Cam"
+                  loading="lazy"
                 />
-                {/* Abstract shapes */}
+                {/* Live cam label */}
                 <div
-                  className="absolute"
+                  className="absolute bottom-4 left-4 flex items-center gap-2 pointer-events-none z-10"
                   style={{
-                    width: '60%',
-                    height: '60%',
-                    top: '-10%',
-                    right: '-10%',
-                    borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(216,198,165,0.25) 0%, transparent 70%)',
+                    background: 'rgba(8,18,36,0.65)',
+                    backdropFilter: 'blur(6px)',
+                    padding: '4px 10px',
+                    borderRadius: '2px',
                   }}
-                />
-                <div
-                  className="absolute"
-                  style={{
-                    width: '40%',
-                    height: '40%',
-                    bottom: '10%',
-                    left: '5%',
-                    borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(184,149,95,0.3) 0%, transparent 70%)',
-                  }}
-                />
-                {/* Overlaid text / editorial label */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                  <p
-                    className="font-sans text-[0.6rem] tracking-[0.4em] uppercase mb-6"
-                    style={{ color: 'rgba(216,198,165,0.7)' }}
+                >
+                  <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#ef4444' }} />
+                  <span
+                    className="font-sans text-[0.6rem] tracking-[0.2em] uppercase font-semibold"
+                    style={{ color: 'rgba(247,243,237,0.85)' }}
                   >
-                    Sabras Radio · Est. 1995
-                  </p>
-                  <p
-                    className="font-serif italic font-light"
-                    style={{
-                      fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-                      color: 'var(--color-ivory)',
-                      lineHeight: 1.2,
-                      textShadow: '0 4px 20px rgba(0,0,0,0.3)',
-                    }}
-                  >
-                    Music that<br />moves you.
-                  </p>
-                  <div
-                    className="w-12 h-[1px] mt-6"
-                    style={{ background: 'rgba(216,198,165,0.5)' }}
-                  />
+                    Live Studio Cam
+                  </span>
                 </div>
               </div>
 

@@ -80,12 +80,12 @@ export default function AudioPlayer() {
 
         {/* Waveform */}
         <div className="hidden md:flex items-end gap-[2px] h-8 flex-shrink-0">
-          {Array.from({ length: 14 }).map((_, i) => (
+          {[30,65,85,55,40,70,90,45,75,60,50,80,35,65].map((h, i) => (
             <div
               key={i}
               className={`waveform-bar w-[3px] rounded-full ${isPlaying ? '' : 'paused'}`}
               style={{
-                height: `${30 + Math.sin(i * 0.9) * 70}%`,
+                height: `${h}%`,
                 background: 'var(--color-gold-muted)',
                 opacity: 0.7,
               }}

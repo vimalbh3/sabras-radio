@@ -48,7 +48,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
     async function refresh() {
       try {
-        const res = await fetch('/api/now-playing')
+        const res = await fetch('/api/now-playing', { cache: 'no-store' })
         if (res.ok && active) {
           const json = (await res.json()) as NowPlayingData
           setNowPlaying(json)
@@ -57,8 +57,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
 
     refresh()
-    const id = setInterval(refresh, 30_000)
-    return () => { active = false; clearInterval(id) }
+    const id = setInterval(refresh, 15_000)
+
+    // Refresh immediately when the tab becomes visible again
+    function onVisible() {
+      if (document.visibilityState === 'visible') refresh()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+
+    return () => {
+      active = false
+      clearInterval(id)
+      document.removeEventListener('visibilitychange', onVisible)
+    }
   }, [])
 
   return (
