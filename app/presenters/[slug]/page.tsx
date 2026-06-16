@@ -90,7 +90,7 @@ export default async function PresenterProfilePage({ params }: Props) {
                     src={presenter.photo as string}
                     alt={presenter.name}
                     fill
-                    className="object-cover object-top"
+                    className="object-contain"
                     sizes="320px"
                     priority
                   />
@@ -212,7 +212,7 @@ export default async function PresenterProfilePage({ params }: Props) {
                         src={p.photo as string}
                         alt={p.name}
                         fill
-                        className="object-cover object-top"
+                        className="object-contain"
                         sizes="(min-width: 640px) 33vw, 100vw"
                       />
                     ) : (

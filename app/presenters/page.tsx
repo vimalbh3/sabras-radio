@@ -42,7 +42,7 @@ export default function PresentersPage() {
                         src={p.photo as string}
                         alt={p.name}
                         fill
-                        className="object-cover object-top"
+                        className="object-contain"
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       />
                     ) : (
