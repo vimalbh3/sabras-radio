@@ -81,7 +81,7 @@ export default function PresentersCarousel() {
                     src={p.photo as string}
                     alt={p.name}
                     fill
-                    className="object-contain"
+                    className="object-cover object-top"
                     sizes="260px"
                   />
                 ) : (
