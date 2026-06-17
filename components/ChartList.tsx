@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Play, X } from 'lucide-react'
-import { CHART } from '@/data/chart'
+import { CHART, type ChartEntry } from '@/data/chart'
 
 const ART_GRADIENTS = [
   'linear-gradient(145deg,#C33764 0%,#1D2671 100%)',
@@ -15,8 +15,9 @@ const ART_GRADIENTS = [
   'linear-gradient(145deg,#11998e 0%,#38ef7d 100%)',
 ]
 
-function getMovement(rank: number, last: number | 'new') {
-  if (last === 'new') return { label: 'NEW', color: 'var(--color-gold-muted)', bg: 'rgba(184,149,95,0.15)' }
+function getMovement(rank: number, last: number | 'new' | 'reentry') {
+  if (last === 'new')     return { label: 'NEW',      color: 'var(--color-gold-muted)', bg: 'rgba(184,149,95,0.15)' }
+  if (last === 'reentry') return { label: 'RE-ENTRY', color: '#a78bfa',                 bg: 'rgba(167,139,250,0.12)' }
   const d = last - rank
   if (d > 0) return { label: `▲ ${d}`, color: '#4ade80', bg: 'rgba(74,222,128,0.1)' }
   if (d < 0) return { label: `▼ ${Math.abs(d)}`, color: '#f87171', bg: 'rgba(248,113,113,0.1)' }
