@@ -57,59 +57,51 @@ export default function Header() {
           className={`transition-all duration-300 overflow-hidden ${scrolled ? 'h-0 opacity-0' : 'h-auto opacity-100'}`}
           style={{ background: 'var(--color-navy-dark)', borderBottom: '1px solid rgba(216,198,165,0.1)' }}
         >
-          <div className="max-w-screen-xl mx-auto px-4 md:px-8 flex items-center justify-between h-9">
-            {/* Now playing ticker */}
-            <div className="flex items-center gap-3 overflow-hidden flex-1 min-w-0">
+          <div className="max-w-screen-xl mx-auto px-4 md:px-8 flex items-center justify-between h-9 gap-4">
+            {/* On Air — single static display */}
+            <div className="flex items-center gap-3 min-w-0">
               <span
                 className="flex-shrink-0 font-sans text-[0.55rem] tracking-[0.2em] uppercase font-semibold px-2 py-0.5"
                 style={{ background: 'var(--color-gold-muted)', color: 'var(--color-ivory)' }}
               >
                 On Air
               </span>
-              <div className="overflow-hidden flex-1">
-                <div className="marquee-track">
-                  {[0, 1].map((j) => (
-                    <span
-                      key={j}
-                      className="font-sans text-[0.65rem] pr-16 whitespace-nowrap"
-                      style={{ color: 'var(--color-gold-champagne)', opacity: 0.8 }}
-                    >
-                      {nowPlaying.show}{nowPlaying.presenter ? ` with ${nowPlaying.presenter}` : ''}
-                      {nowPlaying.track && <>&nbsp;·&nbsp; Now Playing: {nowPlaying.track}</>}
-                      {nowPlaying.nextShow && <>&nbsp;·&nbsp; Up Next: {nowPlaying.nextShow}{nowPlaying.nextPresenter ? ` with ${nowPlaying.nextPresenter}` : ''}{nowPlaying.nextTime ? ` at ${nowPlaying.nextTime}` : ''}</>}
-                      {nowPlaying.listeners != null && <>&nbsp;·&nbsp; {nowPlaying.listeners.toLocaleString()} listeners</>}
-                      &nbsp;·&nbsp; Call us: 0116 261 0666
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <span
+                className="font-sans text-[0.65rem] whitespace-nowrap truncate"
+                style={{ color: 'var(--color-gold-champagne)', opacity: 0.8 }}
+              >
+                {nowPlaying.show}{nowPlaying.presenter ? ` with ${nowPlaying.presenter}` : ''}
+                {nowPlaying.nextShow && <>&nbsp;·&nbsp; Up Next: {nowPlaying.nextShow}{nowPlaying.nextPresenter ? ` with ${nowPlaying.nextPresenter}` : ''}{nowPlaying.nextTime ? ` at ${nowPlaying.nextTime}` : ''}</>}
+              </span>
             </div>
 
             {/* Contact + socials */}
-            <div className="hidden md:flex items-center gap-4 flex-shrink-0 ml-6">
+            <div className="flex items-center gap-3 md:gap-4 flex-shrink-0">
               <a
                 href="https://wa.me/441162610666"
-                className="flex items-center gap-1.5 font-sans text-[0.65rem] transition-colors hover:opacity-100"
+                className="flex items-center gap-1.5 font-sans text-[0.65rem] transition-opacity hover:opacity-100"
                 style={{ color: 'var(--color-gold-champagne)', opacity: 0.7 }}
+                aria-label="WhatsApp"
               >
-                <MessageCircle size={11} />
-                WhatsApp
+                <MessageCircle size={13} />
+                <span className="hidden sm:inline">WhatsApp</span>
               </a>
               <a
                 href="tel:01162610666"
-                className="flex items-center gap-1.5 font-sans text-[0.65rem] transition-colors hover:opacity-100"
+                className="flex items-center gap-1.5 font-sans text-[0.65rem] transition-opacity hover:opacity-100"
                 style={{ color: 'var(--color-gold-champagne)', opacity: 0.7 }}
+                aria-label="Call us"
               >
-                <Phone size={11} />
-                0116 261 0666
+                <Phone size={13} />
+                <span className="hidden md:inline">0116 261 0666</span>
               </a>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 pl-1" style={{ borderLeft: '1px solid rgba(216,198,165,0.2)' }}>
                 {socials.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
                     aria-label={s.label}
-                    className="transition-colors hover:opacity-100"
+                    className="transition-opacity hover:opacity-100"
                     style={{ color: 'var(--color-gold-champagne)', opacity: 0.55 }}
                   >
                     {s.icon}
