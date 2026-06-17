@@ -16,6 +16,7 @@ export const presenters = [
   {
     slug: 'amber',
     name: 'Amber',
+    photo: '/Amber.jpeg',
     initials: 'AM',
     show: 'Mid-morning Show',
     time: '10am – 1pm',
@@ -67,6 +68,7 @@ export const presenters = [
   {
     slug: 'rajpal',
     name: 'Rajpal',
+    photo: '/Rajpal.jpg',
     initials: 'RP',
     show: 'Punjabi Show',
     time: '9pm – 10pm',
@@ -92,6 +94,7 @@ export const presenters = [
   {
     slug: 'zahara',
     name: 'Zahara',
+    photo: '/Zahara.jpg',
     initials: 'ZA',
     show: 'Saturday Breakfast',
     time: '7am – 9am',
@@ -104,6 +107,7 @@ export const presenters = [
   {
     slug: 'missy-b',
     name: 'Missy B',
+    photo: '/Missy B.jpg',
     initials: 'MB',
     show: 'Mic & Masala',
     time: '9am – 12pm',
@@ -116,6 +120,7 @@ export const presenters = [
   {
     slug: 'jagdeep-rainu',
     name: 'Jagdeep Rainu',
+    photo: '/Jagdeep_Rainu.jpg',
     initials: 'JR',
     show: 'Punjabi Show',
     time: '12pm – 2pm',
@@ -166,6 +171,7 @@ export const presenters = [
   {
     slug: 'vishal-jogiya',
     name: 'Vishal Jogiya',
+    photo: '/Vishal_jogiya.jpg',
     initials: 'VJ',
     show: 'Sunday Request',
     time: '9am – 12pm',
@@ -178,6 +184,7 @@ export const presenters = [
   {
     slug: 'alia',
     name: 'Alia',
+    photo: '/Alia.jpg',
     initials: 'AL',
     show: 'Filmi Kalakar',
     time: '4pm – 6pm',
