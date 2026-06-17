@@ -14,9 +14,9 @@ export const CHART_HOST   = 'Sam'
 export const CHART_TIME   = 'Every Saturday 4–7pm'
 
 export const CHART: ChartEntry[] = [
-  { rank:  1, lastWeek:  1,          title: 'Jaiye Sajana',              artist: 'Dhurandhar 2',                      weeks: 12, peak:  1, spotifyId: null },
-  { rank:  2, lastWeek:  2,          title: 'Bangles',                   artist: 'Sanju Rathod & G Spark (Marathi)',  weeks:  8, peak:  1, spotifyId: null },
-  { rank:  3, lastWeek:  3,          title: 'Bairaan',                   artist: 'Banjaare',                          weeks: 12, peak:  1, spotifyId: null },
+  { rank:  1, lastWeek:  1,          title: 'Jaiye Sajana',              artist: 'Dhurandhar 2',                      weeks: 12, peak:  1, spotifyId: '6xwKNAUHeo2DbWNAPi8aEy' },
+  { rank:  2, lastWeek:  2,          title: 'Bangles',                   artist: 'Sanju Rathod & G Spark (Marathi)',  weeks:  8, peak:  1, spotifyId: '0ocYeOy5vn4UjX4DLsLoJ0' },
+  { rank:  3, lastWeek:  3,          title: 'Bairaan',                   artist: 'Banjaare',                          weeks: 12, peak:  1, spotifyId: '0RsH8g8DxdYZgdGcod5I36' },
   { rank:  4, lastWeek:  5,          title: 'Hellallallo',               artist: 'Peddi (Telugu)',                    weeks:  3, peak:  4, spotifyId: null },
   { rank:  5, lastWeek:  8,          title: 'Chunnari Chunnari – Lets Go', artist: 'Hai Jawani To Ishq Hona Hai',    weeks:  3, peak:  5, spotifyId: null },
   { rank:  6, lastWeek: 'new',       title: 'Siir Siir',                 artist: 'Nora Fatehi, Vegedream & Sanjoy',  weeks:  1, peak:  6, spotifyId: null },
