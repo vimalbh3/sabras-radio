@@ -27,7 +27,7 @@ const blocks = [
     label: 'Every Friday',
     title: 'The Chart Show',
     body: 'Vote for your favourite track and hear the results live every Friday from 7pm with Dev Singh.',
-    href: '/schedule',
+    href: '/chart-show',
     bg: 'var(--color-gold-muted)',
     accent: 'var(--color-ivory)',
     textColor: 'var(--color-ivory)',
