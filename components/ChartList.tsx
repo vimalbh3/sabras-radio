@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Play, X } from 'lucide-react'
 import { CHART, type ChartEntry } from '@/data/chart'
 
@@ -97,15 +98,16 @@ export default function ChartList() {
 
                       {/* Album art */}
                       <div
-                        className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-[2px] flex items-center justify-center"
+                        className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-[2px] overflow-hidden relative flex items-center justify-center"
                         style={{ background: art }}
                       >
-                        <span
-                          className="font-serif font-light text-sm select-none"
-                          style={{ color: 'rgba(255,255,255,0.65)' }}
-                        >
-                          {initials}
-                        </span>
+                        {entry.imageUrl ? (
+                          <Image src={entry.imageUrl} alt={entry.title} fill className="object-cover" sizes="56px" />
+                        ) : (
+                          <span className="font-serif font-light text-sm select-none" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                            {initials}
+                          </span>
+                        )}
                       </div>
 
                       {/* Title + artist */}

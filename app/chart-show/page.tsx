@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft } from 'lucide-react'
 import { CHART, CHART_WEEK, CHART_ENDING, CHART_HOST, CHART_TIME } from '@/data/chart'
 import ChartList from '@/components/ChartList'
@@ -128,15 +129,16 @@ export default function ChartShowPage() {
               <div className="flex items-center gap-5">
                 {/* Album art */}
                 <div
-                  className="flex-shrink-0 w-20 h-20 rounded-[2px] flex items-center justify-center"
+                  className="flex-shrink-0 w-20 h-20 rounded-[2px] overflow-hidden relative flex items-center justify-center"
                   style={{ background: ART_TOP }}
                 >
-                  <span
-                    className="font-serif text-2xl font-light"
-                    style={{ color: 'rgba(255,255,255,0.65)' }}
-                  >
-                    {numberOne.title.split(' ').slice(0, 2).map(w => w[0]).join('')}
-                  </span>
+                  {numberOne.imageUrl ? (
+                    <Image src={numberOne.imageUrl} alt={numberOne.title} fill className="object-cover" sizes="80px" />
+                  ) : (
+                    <span className="font-serif text-2xl font-light" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                      {numberOne.title.split(' ').slice(0, 2).map(w => w[0]).join('')}
+                    </span>
+                  )}
                 </div>
 
                 <div>
