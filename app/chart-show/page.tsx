@@ -153,12 +153,24 @@ export default function ChartShowPage() {
                     {numberOne.artist}
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
-                    <span
-                      className="font-sans text-[0.6rem] font-semibold tracking-wider px-2.5 py-1 rounded-sm"
-                      style={{ background: 'rgba(248,113,113,0.12)', color: '#f87171' }}
-                    >
-                      ▼ Last week #{numberOne.lastWeek}
-                    </span>
+                    {(() => {
+                      const lw = numberOne.lastWeek
+                      let label: string, color: string, bg: string
+                      if (lw === 'new')     { label = 'NEW';      color = 'var(--color-gold-muted)'; bg = 'rgba(184,149,95,0.15)' }
+                      else if (lw === 'reentry') { label = 'RE-ENTRY'; color = '#a78bfa'; bg = 'rgba(167,139,250,0.12)' }
+                      else {
+                        const d = lw - numberOne.rank
+                        if (d > 0)      { label = `▲ ${d}`;           color = '#4ade80'; bg = 'rgba(74,222,128,0.1)' }
+                        else if (d < 0) { label = `▼ ${Math.abs(d)}`; color = '#f87171'; bg = 'rgba(248,113,113,0.12)' }
+                        else            { label = '—';                 color = 'rgba(216,198,165,0.45)'; bg = 'transparent' }
+                      }
+                      return (
+                        <span className="font-sans text-[0.6rem] font-semibold tracking-wider px-2.5 py-1 rounded-sm"
+                          style={{ background: bg, color }}>
+                          {label}
+                        </span>
+                      )
+                    })()}
                     <span
                       className="font-sans text-[0.6rem]"
                       style={{ color: 'rgba(216,198,165,0.45)' }}
